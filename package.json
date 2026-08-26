@@ -1,0 +1,13 @@
+{
+  "name": "knicks-ticket-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Telegram alerts for newly listed New York Knicks home games",
+  "scripts": {
+    "check": "node monitor.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
