@@ -51,9 +51,20 @@ function writeState(state) {
   fs.writeFileSync(STATE_FILE, `${JSON.stringify(state, null, 2)}\n`);
 }
 
+const API_CALL_SPACING_MS = 400;
+let lastApiCallAt = 0;
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function apiGet(resource, params) {
   const apiKey = process.env.TICKETMASTER_API_KEY;
   if (!apiKey) throw new Error('TICKETMASTER_API_KEY is required');
+
+  const wait = lastApiCallAt + API_CALL_SPACING_MS - Date.now();
+  if (wait > 0) await sleep(wait);
+  lastApiCallAt = Date.now();
 
   const url = new URL(`${API_ROOT}/${resource}.json`);
   for (const [key, value] of Object.entries({ ...params, apikey: apiKey })) {
@@ -61,6 +72,16 @@ async function apiGet(resource, params) {
   }
 
   const response = await fetch(url, { headers: { accept: 'application/json' } });
+  if (response.status === 429) {
+    await sleep(1500);
+    lastApiCallAt = Date.now();
+    const retry = await fetch(url, { headers: { accept: 'application/json' } });
+    if (!retry.ok) {
+      const detail = (await retry.text()).slice(0, 300);
+      throw new Error(`Ticketmaster API returned ${retry.status}: ${detail}`);
+    }
+    return retry.json();
+  }
   if (!response.ok) {
     const detail = (await response.text()).slice(0, 300);
     throw new Error(`Ticketmaster API returned ${response.status}: ${detail}`);
