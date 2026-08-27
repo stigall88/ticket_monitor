@@ -1,3 +1,23 @@
 {
-  "checkIntervalMinutes": 15
+  "checkIntervalMinutes": 15,
+  "teams": [
+    {
+      "name": "New York Knicks",
+      "venue": "Madison Square Garden",
+      "venueCity": "New York",
+      "venueState": "NY"
+    },
+    {
+      "name": "Philadelphia 76ers",
+      "venue": "Wells Fargo Center",
+      "venueCity": "Philadelphia",
+      "venueState": "PA"
+    },
+    {
+      "name": "Chicago Bulls",
+      "venue": "United Center",
+      "venueCity": "Chicago",
+      "venueState": "IL"
+    }
+  ]
 }

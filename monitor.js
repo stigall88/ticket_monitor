@@ -7,8 +7,6 @@ const ROOT = __dirname;
 const CONFIG_FILE = process.env.CONFIG_FILE || path.join(ROOT, 'config.json');
 const STATE_FILE = process.env.STATE_FILE || path.join(ROOT, 'state.json');
 const API_ROOT = 'https://app.ticketmaster.com/discovery/v2';
-const KNICKS_NAME = 'New York Knicks';
-const VENUE_NAME = 'Madison Square Garden';
 const SCHEDULE_OFFSET_MINUTE = 7;
 const ALLOWED_INTERVALS = new Set([5, 10, 15, 20, 30, 60]);
 
@@ -26,6 +24,16 @@ function readConfig() {
   if (!ALLOWED_INTERVALS.has(config.checkIntervalMinutes)) {
     throw new Error('config.json checkIntervalMinutes must be 5, 10, 15, 20, 30, or 60');
   }
+  if (!Array.isArray(config.teams) || config.teams.length === 0) {
+    throw new Error('config.json must include a non-empty "teams" array');
+  }
+  for (const team of config.teams) {
+    if (!team.name || !team.venue || !team.venueCity || !team.venueState) {
+      throw new Error(
+        'Each entry in config.json "teams" needs name, venue, venueCity, and venueState',
+      );
+    }
+  }
   return config;
 }
 
@@ -35,7 +43,7 @@ function isScheduledCheckTime(date, intervalMinutes) {
 }
 
 function readState() {
-  return readJson(STATE_FILE, { knownEventIds: [] });
+  return readJson(STATE_FILE, { teams: {} });
 }
 
 function writeState(state) {
@@ -64,35 +72,35 @@ function embedded(data, type) {
   return data?._embedded?.[type] || [];
 }
 
-async function resolveAttractionId() {
+async function resolveAttractionId(teamName) {
   const data = await apiGet('attractions', {
-    keyword: KNICKS_NAME,
+    keyword: teamName,
     countryCode: 'US',
     size: '20',
   });
   const match = embedded(data, 'attractions').find(
-    item => item.name?.toLowerCase() === KNICKS_NAME.toLowerCase(),
+    item => item.name?.toLowerCase() === teamName.toLowerCase(),
   );
-  if (!match) throw new Error(`Could not resolve the ${KNICKS_NAME} attraction`);
+  if (!match) throw new Error(`Could not resolve the ${teamName} attraction`);
   return match.id;
 }
 
-async function resolveVenueId() {
+async function resolveVenueId(venueName, venueCity, venueState) {
   const data = await apiGet('venues', {
-    keyword: VENUE_NAME,
+    keyword: venueName,
     countryCode: 'US',
-    stateCode: 'NY',
+    stateCode: venueState,
     size: '20',
   });
   const match = embedded(data, 'venues').find(item =>
-    item.name?.toLowerCase() === VENUE_NAME.toLowerCase()
-    && item.city?.name?.toLowerCase() === 'new york',
+    item.name?.toLowerCase() === venueName.toLowerCase()
+    && item.city?.name?.toLowerCase() === venueCity.toLowerCase(),
   );
-  if (!match) throw new Error(`Could not resolve ${VENUE_NAME}`);
+  if (!match) throw new Error(`Could not resolve ${venueName} in ${venueCity}, ${venueState}`);
   return match.id;
 }
 
-function isKnicksHomeGame(event, attractionId, venueId) {
+function isHomeGame(event, attractionId, venueId) {
   const attractionIds = embedded(event, 'attractions').map(item => item.id);
   const venueIds = embedded(event, 'venues').map(item => item.id);
   return attractionIds.includes(attractionId) && venueIds.includes(venueId);
@@ -128,9 +136,7 @@ async function fetchHomeGames(attractionId, venueId) {
     size: '100',
     sort: 'date,asc',
   });
-  return embedded(data, 'events').filter(event =>
-    isKnicksHomeGame(event, attractionId, venueId),
-  );
+  return embedded(data, 'events').filter(event => isHomeGame(event, attractionId, venueId));
 }
 
 function eventLine(event) {
@@ -157,16 +163,41 @@ async function sendTelegramText(text) {
   }
 }
 
-async function sendEventAlert(events) {
+async function sendEventAlert(teamName, events) {
   const shown = events.slice(0, 10);
   const remaining = events.length - shown.length;
   const text = [
-    `🏀 Tickets are now on sale for ${events.length} Knicks home game${events.length === 1 ? '' : 's'}:`,
+    `🏀 Tickets are now on sale for ${events.length} ${teamName} home game${events.length === 1 ? '' : 's'}:`,
     '',
     ...shown.map(eventLine),
     remaining > 0 ? `\n…and ${remaining} more.` : '',
   ].filter(Boolean).join('\n');
   await sendTelegramText(text);
+}
+
+async function checkTeam(team, state) {
+  const saved = state.teams[team.name] || {};
+  const attractionId = saved.attractionId || await resolveAttractionId(team.name);
+  const venueId = saved.venueId
+    || await resolveVenueId(team.venue, team.venueCity, team.venueState);
+
+  const events = await fetchHomeGames(attractionId, venueId);
+  const previousSaleStates = saved.eventSaleStates || {};
+  const currentSaleStates = Object.fromEntries(
+    events.map(event => [event.id, saleObservation(event)]),
+  );
+  const onSaleEvents = events.filter(event => currentSaleStates[event.id].onSale);
+  const newlyOnSaleEvents = onSaleEvents.filter(
+    event => previousSaleStates[event.id]?.onSale !== true,
+  );
+
+  state.teams[team.name] = {
+    attractionId,
+    venueId,
+    eventSaleStates: { ...previousSaleStates, ...currentSaleStates },
+  };
+
+  return { team, events, onSaleEvents, newlyOnSaleEvents };
 }
 
 async function main() {
@@ -178,36 +209,38 @@ async function main() {
   }
 
   const state = readState();
-  const attractionId = state.attractionId || await resolveAttractionId();
-  const venueId = state.venueId || await resolveVenueId();
-  const events = await fetchHomeGames(attractionId, venueId);
-  const previousSaleStates = state.eventSaleStates || {};
-  const currentSaleStates = Object.fromEntries(
-    events.map(event => [event.id, saleObservation(event)]),
-  );
-  const onSaleEvents = events.filter(event => currentSaleStates[event.id].onSale);
-  const newlyOnSaleEvents = onSaleEvents.filter(
-    event => previousSaleStates[event.id]?.onSale !== true,
-  );
+  if (!state.teams) state.teams = {};
 
-  console.log(
-    `Found ${events.length} Knicks home game(s); ${onSaleEvents.length} on sale; `
-    + `${newlyOnSaleEvents.length} newly on sale.`,
-  );
+  const results = [];
+  for (const team of config.teams) {
+    results.push(await checkTeam(team, state));
+  }
+
+  for (const result of results) {
+    console.log(
+      `${result.team.name}: found ${result.events.length} home game(s); `
+      + `${result.onSaleEvents.length} on sale; ${result.newlyOnSaleEvents.length} newly on sale.`,
+    );
+  }
+
   if (process.argv.includes('--test-alert')) {
+    const summary = results
+      .map(r => `${r.team.name}: ${r.onSaleEvents.length}/${r.events.length} on sale`)
+      .join('; ');
     await sendTelegramText(
-      `✅ Knicks ticket monitor test succeeded. Ticketmaster returned ${events.length} current home game${events.length === 1 ? '' : 's'} at Madison Square Garden; ${onSaleEvents.length} ${onSaleEvents.length === 1 ? 'is' : 'are'} currently marked publicly on sale. Scheduled monitoring is active.`,
+      `✅ Ticket monitor test succeeded. ${summary}. Scheduled monitoring is active.`,
     );
     console.log('Telegram test alert sent. Test mode does not change notification state.');
     return;
   }
 
-  if (newlyOnSaleEvents.length > 0) await sendEventAlert(newlyOnSaleEvents);
-  writeState({
-    attractionId,
-    venueId,
-    eventSaleStates: { ...previousSaleStates, ...currentSaleStates },
-  });
+  for (const result of results) {
+    if (result.newlyOnSaleEvents.length > 0) {
+      await sendEventAlert(result.team.name, result.newlyOnSaleEvents);
+    }
+  }
+
+  writeState(state);
 }
 
 if (require.main === module) {
@@ -218,7 +251,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  isKnicksHomeGame,
+  isHomeGame,
   isPubliclyOnSale,
   isScheduledCheckTime,
   readConfig,

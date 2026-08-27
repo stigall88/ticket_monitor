@@ -1,14 +1,19 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
-  isKnicksHomeGame,
+  isHomeGame,
   isPubliclyOnSale,
   isScheduledCheckTime,
   readConfig,
 } = require('../monitor');
 
-test('loads the supported default interval', () => {
-  assert.deepEqual(readConfig(), { checkIntervalMinutes: 15 });
+test('loads the configured teams and interval', () => {
+  const config = readConfig();
+  assert.equal(config.checkIntervalMinutes, 15);
+  assert.ok(Array.isArray(config.teams) && config.teams.length > 0);
+  for (const team of config.teams) {
+    assert.ok(team.name && team.venue && team.venueCity && team.venueState);
+  }
 });
 
 test('requires a current, non-TBD public sale before alerting', () => {
@@ -56,22 +61,22 @@ test('supported intervals remain aligned to the seven-minute offset', () => {
   assert.equal(isScheduledCheckTime(new Date('2026-08-16T12:07:00Z'), 60), true);
 });
 
-test('accepts an event only when it contains both Knicks and MSG IDs', () => {
+test('accepts an event only when it contains both the team and venue IDs', () => {
   const event = {
     _embedded: {
-      attractions: [{ id: 'knicks' }, { id: 'opponent' }],
-      venues: [{ id: 'msg' }],
+      attractions: [{ id: 'team' }, { id: 'opponent' }],
+      venues: [{ id: 'venue' }],
     },
   };
-  assert.equal(isKnicksHomeGame(event, 'knicks', 'msg'), true);
-  assert.equal(isKnicksHomeGame(event, 'knicks', 'away-arena'), false);
-  assert.equal(isKnicksHomeGame(event, 'other-team', 'msg'), false);
+  assert.equal(isHomeGame(event, 'team', 'venue'), true);
+  assert.equal(isHomeGame(event, 'team', 'away-arena'), false);
+  assert.equal(isHomeGame(event, 'other-team', 'venue'), false);
 });
 
 test('rejects incomplete Ticketmaster event data safely', () => {
-  assert.equal(isKnicksHomeGame({}, 'knicks', 'msg'), false);
+  assert.equal(isHomeGame({}, 'team', 'venue'), false);
   assert.equal(
-    isKnicksHomeGame({ _embedded: { attractions: [{ id: 'knicks' }] } }, 'knicks', 'msg'),
+    isHomeGame({ _embedded: { attractions: [{ id: 'team' }] } }, 'team', 'venue'),
     false,
   );
 });
