@@ -1,3 +1,544 @@
 {
-  "knownEventIds": []
+  "knownEventIds": [],
+  "teams": {
+    "New York Knicks": {
+      "attractionId": "K8vZ9171o57",
+      "venueId": "KovZpZA7AAEA",
+      "eventSaleStates": {
+        "G5diZ_okBlAC6": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_okBi4Cr": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tkzb0": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tkzbE": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t6Fbt": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t6bbl": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t6bbc": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t6IbR": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t6zbs": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tFFbV": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tFFbU": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tFbbz": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tFIbD": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tFIbT": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tFz_v": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6taF_d": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tab_A": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tab_6": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6taI_a": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6taz_G": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t1F_C": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t1F_8": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t1b_K": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t1I_4": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t1z_b": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t1z_h": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t5F_q": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t5b_L": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t5I_P": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t5I_n": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6t5z_c": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tGF_Y": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tGb_w": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tGb_V": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tGI_U": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tGz_y": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tuF_H": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tubQZ": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tubQe": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tuIQ7": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tuzQa": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tCFQG": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tCbQC": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        },
+        "G5diZ_o6tCbQf": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": null,
+          "publicSaleStartTBD": false
+        }
+      }
+    },
+    "Philadelphia 76ers": {
+      "attractionId": "K8vZ9171oZ0",
+      "venueId": "Za5ju3rKuqZBbc4XHEVP2-DVEH3jCYZ-l",
+      "eventSaleStates": {}
+    },
+    "Chicago Bulls": {
+      "attractionId": "K8vZ91718X0",
+      "venueId": "KovZpa2M7e",
+      "eventSaleStates": {
+        "vv178Z_8GkDI_wcF": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIhecb": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIj3cg": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIqwm7": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDILemx": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIO3mW": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDI-xR6": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIxwR_": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDI0eRc": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIP3RD": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIJxY1": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIEwYh": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIteYP": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIn3YM": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIcesK": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIm3s0": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIRxsB": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIYww8": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIwewb": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIS3wJ": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIVxws": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIgwwX": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIMeSF": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIz3So": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIyxS0": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIDeSm": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIH3SH": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIWxV4": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIXwVx": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDtZeVn": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDtv3VB": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDtexgG": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDt7eg_": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDtA3gx": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDtkxgJ": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDt6wgi": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDta3gH": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDt1wUa": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDtG3Uj": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIbxic": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDI93iL": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDI4wi4": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        },
+        "vv178Z_8GkDIf3iZ": {
+          "onSale": false,
+          "statusCode": "offsale",
+          "publicSaleStart": "2026-09-17T15:00:00Z",
+          "publicSaleStartTBD": false
+        }
+      }
+    }
+  }
 }
