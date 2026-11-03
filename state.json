@@ -42,8 +42,8 @@
           "publicSaleStartTBD": false
         },
         "G5diZ_o6t6bbc": {
-          "onSale": true,
-          "statusCode": "onsale",
+          "onSale": false,
+          "statusCode": "offsale",
           "publicSaleStart": "2026-09-16T16:00:00Z",
           "publicSaleStartTBD": false
         },
